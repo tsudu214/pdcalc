@@ -13,6 +13,8 @@ public:
     double pop();
     void swapTop();
     void getElements(size_t n, vector<double>& v) const;
+    size_t size() const;
+    void clear();
 
 private:
     deque<double> stack_;
@@ -55,6 +57,16 @@ void Stack::StackImpl::swapTop()
     stack_.push_back(second);
 }
 
+size_t Stack::StackImpl::size() const
+{
+    return stack_.size();
+}
+
+void Stack::StackImpl::clear()
+{
+    stack_.clear();
+}
+
 Stack& Stack::Instance()
 {
     static Stack instance;
@@ -66,9 +78,11 @@ void Stack::push(double x)
     pimpl_->push(x);
 }
 
-void Stack::getElements(size_t n, std::vector<double>& v) const
+vector<double> Stack::getElements(size_t n) const
 {
+    vector<double> v;
     pimpl_->getElements(n, v);
+    return v;
 }
 
 double Stack::pop()
@@ -81,11 +95,8 @@ void Stack::swapTop()
     pimpl_->swapTop();
 }
 
-Stack::Stack()
-{
-    pimpl_ = make_unique<StackImpl>();
-}
+Stack::Stack() : pimpl_(make_unique<StackImpl>()) {}
 
-Stack::~Stack() {}
+Stack::~Stack() = default;
 
 };

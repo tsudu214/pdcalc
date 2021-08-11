@@ -8,11 +8,11 @@ namespace pdCalc {
 
 class Stack
 {
-    class StackImpl;
 public:
     static Stack& Instance();
     void push(double d);
-    void getElements(size_t n, std::vector<double>& v) const;
+    // returns first min(n, stackSize) elements of the stack with the top of stack at position 0
+    std::vector<double> getElements(size_t n) const;
     double pop();
     void swapTop();
 
@@ -25,6 +25,7 @@ private:
     Stack(Stack&&) = delete;
     Stack&& operator=(Stack&&) = delete;
 
+    class StackImpl;
     std::unique_ptr<StackImpl> pimpl_;
 };
 
