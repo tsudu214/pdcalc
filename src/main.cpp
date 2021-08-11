@@ -2,6 +2,8 @@
 
 #include "Stack.h"
 
+using pdCalc::Stack;
+
 using namespace std;
 
 void pp(const vector<double>& v)
@@ -17,7 +19,7 @@ void pp(const vector<double>& v)
 
 int main()
 {
-    Stack S;
+    Stack& S = Stack::Instance();
     S.push(1);
     vector<double> v;
     S.getElements(3, v);
