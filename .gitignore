@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# visual studio
+.vs/
+x64/
+*.vcxproj.user
+vs2017.x64/
