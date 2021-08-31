@@ -95,7 +95,9 @@ void Stack::swapTop()
     pimpl_->swapTop();
 }
 
-Stack::Stack() : pimpl_(make_unique<StackImpl>()) {}
+Stack::Stack() 
+: pimpl_{ make_unique<StackImpl>() }
+{ }
 
 Stack::~Stack() = default;
 

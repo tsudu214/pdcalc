@@ -4,6 +4,11 @@
 set(pdcalc_lib_sources
   Stack.h
   Stack.cpp
+  Exception.h
+  Publisher.h
+  Publisher.cpp
+  Observer.h
+  Observer.cpp
 )
 
 #-------------------------------------------------------------------------------
