@@ -1,4 +1,5 @@
 #include "Observer.h"
+#include "Publisher.h"
 
 namespace pdCalc {
 
@@ -8,9 +9,9 @@ Observer::Observer(const std::string& name)
 
 Observer::~Observer() = default;
 
-void Observer::notify()
+void Observer::notify(std::shared_ptr<EventData> d)
 {
-    notifyImpl();
+    notifyImpl(d);
 }
 
 };

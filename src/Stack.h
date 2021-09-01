@@ -1,12 +1,14 @@
 #ifndef STACK_H
 #define STACK_H
 
+#include "Publisher.h"
+
 #include <vector>
 #include <memory>
 
 namespace pdCalc {
 
-class Stack
+class Stack : private Publisher
 {
 public:
     static Stack& Instance();
@@ -15,6 +17,9 @@ public:
     std::vector<double> getElements(size_t n) const;
     double pop();
     void swapTop();
+
+    using Publisher::attach;
+    using Publisher::detach;
 
 private:
     Stack();
