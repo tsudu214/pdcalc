@@ -8,6 +8,20 @@
 
 namespace pdCalc {
 
+class StackEventData : public EventData
+{
+public:
+    enum class ErrorCondition { Empty, TooFewArguments };
+    explicit StackEventData(ErrorCondition e) : err_(e) { }
+
+    static const char* Message(ErrorCondition e);
+    const char* message() const;
+    ErrorCondition error() const { return err_; }
+
+private:
+    ErrorCondition err_;
+};
+
 class Stack : private Publisher
 {
 public:
@@ -20,6 +34,8 @@ public:
 
     using Publisher::attach;
     using Publisher::detach;
+
+    static const std::string StackError;
 
 private:
     Stack();
